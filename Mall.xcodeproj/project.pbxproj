@@ -75,14 +75,13 @@
 		CA33E1DF2804E73900804EA1 /* Mall */ = {
 			isa = PBXGroup;
 			children = (
+				CAA7FA8F28057B0200ED2206 /* Splash */,
+				CAA7FA8E28057AF300ED2206 /* UI */,
 				CAA7FA872805792300ED2206 /* Network */,
 				CAA7FA862805791800ED2206 /* User */,
 				CAA7FA842805782700ED2206 /* Models */,
 				CAA7FA83280577F100ED2206 /* Resources */,
 				CAA7FA82280577E500ED2206 /* Delegates */,
-				CA33E1E42804E73900804EA1 /* ViewController.swift */,
-				CA33E1EB2804E73A00804EA1 /* LaunchScreen.storyboard */,
-				CA33E1E62804E73900804EA1 /* Main.storyboard */,
 			);
 			path = Mall;
 			sourceTree = "<group>";
@@ -142,6 +141,23 @@
 			children = (
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		CAA7FA8E28057AF300ED2206 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CA33E1E42804E73900804EA1 /* ViewController.swift */,
+				CA33E1E62804E73900804EA1 /* Main.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		CAA7FA8F28057B0200ED2206 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				CA33E1EB2804E73A00804EA1 /* LaunchScreen.storyboard */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		DADFA6353848AC53CE7DFF37 /* Pods */ = {
