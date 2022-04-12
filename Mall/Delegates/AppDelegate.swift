@@ -7,6 +7,8 @@
 
 import UIKit
 
+var api = "https://api.malls.team"
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
