@@ -8,9 +8,32 @@
 import Foundation
 import UIKit
 
+
+// MARK: - Register Model
+
+struct RegisterModel: Encodable {
+    
+    let phoneNumber: String
+    let firstName: String
+    var email: String
+    var password : String
+    let country: Int
+    
+    init(reg: [String: Any]) {
+        phoneNumber = reg["phoneNumber"] as? String ?? ""
+        firstName = reg["firstName"] as? String ?? ""
+        email = reg["email"] as? String ?? ""
+        password = reg["password"] as? String ?? ""
+        country = reg["country"] as? Int ?? 0
+    }
+}
+
+
+
 //MARK: LoginModel
 
 struct LoginModel: Encodable {
+    
     let id: Int
     let phoneNumber, firstName, lastName, email: String
     let state, country: Int
@@ -42,23 +65,6 @@ struct LoginModel: Encodable {
         self.balance = login["balance"] as! Int
         self.avatar = login["avatar"] as? String ?? ""
         self.result = login["result"] as? String ?? ""
-    }
-}
-
-
-//MARK: MainPage Model
-struct Section {
-    let bestExchange: [BestExchange]
-    let ads: [Ads]
-    let category: [Category]
-    var sections: [Any] {
-        return [bestExchange, ads, category]
-    }
-    
-    init(bestExchange: [BestExchange], ads: [Ads], category: [Category]) {
-        self.bestExchange = bestExchange
-        self.ads = ads
-        self.category = category
     }
 }
 
@@ -104,7 +110,7 @@ class Ads: Decodable {
 }
 
 // MARK: - Category
-class Category: Decodable{
+class Category: Decodable {
     var id: Int
     var name: String
     var ads: [Ads]
@@ -1638,7 +1644,8 @@ struct FavoriteModel{
 }
 
 //MARK: - Delete request
-class DeleteFavorite{
+class DeleteFavorite {
+    
     var deleteModel = [DeleteModel]()
     init(deleteModel: [DeleteModel]){
         self.deleteModel = deleteModel
