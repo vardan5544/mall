@@ -109,6 +109,7 @@ extension MainPageTableViewCell: UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.selectCell(cell: self, indexPath: indexPath)
+        print("Selected item \(indexPath), \(result[indexPath.row].name)")
     }
 }
 

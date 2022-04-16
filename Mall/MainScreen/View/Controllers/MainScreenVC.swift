@@ -123,8 +123,9 @@ extension MainScreenVC: UITableViewDelegate, UITableViewDataSource {
             cell.configure(section : categoris![indexPath.row], searching: true, res: searchItems)
         }else {
             
+            guard let categoris = categoris else { return UITableViewCell() }
             cell.mainCollectionView.tag = indexPath.section
-            cell.configure(section: categoris![indexPath.row], searching: false, res: [])
+            cell.configure(section: categoris[indexPath.row], searching: false, res: categoris[indexPath.row].ads)
             cell.sectionText.text = cell.sectionModel?.name
             cell.delegate = self
             return cell

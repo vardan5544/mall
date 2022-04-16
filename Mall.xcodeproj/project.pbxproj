@@ -44,6 +44,8 @@
 		CAF9B1BF2809F39800CFDF88 /* MallError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9B1BA2809F39800CFDF88 /* MallError.swift */; };
 		CAF9B1C22809F3B300CFDF88 /* SessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9B1C02809F3B300CFDF88 /* SessionProtocol.swift */; };
 		CAF9B1C32809F3B300CFDF88 /* URLBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9B1C12809F3B300CFDF88 /* URLBuilderProtocol.swift */; };
+		CAF9B1CB280AC42A00CFDF88 /* AdsDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF9B1CA280AC42A00CFDF88 /* AdsDetail.storyboard */; };
+		CAF9B1CD280AC44500CFDF88 /* AdsDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9B1CC280AC44500CFDF88 /* AdsDetailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +90,8 @@
 		CAF9B1BA2809F39800CFDF88 /* MallError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MallError.swift; sourceTree = "<group>"; };
 		CAF9B1C02809F3B300CFDF88 /* SessionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionProtocol.swift; sourceTree = "<group>"; };
 		CAF9B1C12809F3B300CFDF88 /* URLBuilderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLBuilderProtocol.swift; sourceTree = "<group>"; };
+		CAF9B1CA280AC42A00CFDF88 /* AdsDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdsDetail.storyboard; sourceTree = "<group>"; };
+		CAF9B1CC280AC44500CFDF88 /* AdsDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsDetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +135,7 @@
 		CA33E1DF2804E73900804EA1 /* Mall */ = {
 			isa = PBXGroup;
 			children = (
+				CAF9B1C4280AC3D700CFDF88 /* AdsDetail */,
 				CAF9B1A02809DB5500CFDF88 /* CategoriesScreen */,
 				CAF9B18F280894C100CFDF88 /* MainScreen */,
 				CAA7FA8D28057A2800ED2206 /* Registration */,
@@ -396,6 +401,55 @@
 			path = HTTP;
 			sourceTree = "<group>";
 		};
+		CAF9B1C4280AC3D700CFDF88 /* AdsDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CAF9B1C7280AC3F800CFDF88 /* Model */,
+				CAF9B1C6280AC3F000CFDF88 /* View */,
+				CAF9B1C5280AC3E600CFDF88 /* ViewModel */,
+			);
+			path = AdsDetail;
+			sourceTree = "<group>";
+		};
+		CAF9B1C5280AC3E600CFDF88 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CAF9B1C6280AC3F000CFDF88 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CAF9B1C9280AC40700CFDF88 /* Controllers */,
+				CAF9B1C8280AC40100CFDF88 /* UI */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CAF9B1C7280AC3F800CFDF88 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CAF9B1C8280AC40100CFDF88 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CAF9B1CA280AC42A00CFDF88 /* AdsDetail.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		CAF9B1C9280AC40700CFDF88 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CAF9B1CC280AC44500CFDF88 /* AdsDetailVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		DADFA6353848AC53CE7DFF37 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +521,7 @@
 			files = (
 				CA33E1ED2804E73A00804EA1 /* LaunchScreen.storyboard in Resources */,
 				CAD6444F28074E3000AFFB9B /* Registration.storyboard in Resources */,
+				CAF9B1CB280AC42A00CFDF88 /* AdsDetail.storyboard in Resources */,
 				CA33E1EA2804E73A00804EA1 /* Assets.xcassets in Resources */,
 				CAF9B1A52809DBB200CFDF88 /* CategoryAdsSB.storyboard in Resources */,
 				CA33E1E82804E73900804EA1 /* Main.storyboard in Resources */,
@@ -538,6 +593,7 @@
 				CAF9B1BE2809F39800CFDF88 /* MallBaseURL.swift in Sources */,
 				CAD6445228074E6100AFFB9B /* RegistrationVC.swift in Sources */,
 				CAD6444B28074E0C00AFFB9B /* RegistrationModel.swift in Sources */,
+				CAF9B1CD280AC44500CFDF88 /* AdsDetailVC.swift in Sources */,
 				CAF9B1952808966B00CFDF88 /* MainTabBarController.swift in Sources */,
 				CAD6445A2807564300AFFB9B /* Extensions.swift in Sources */,
 				CAF9B1B32809F1AF00CFDF88 /* RequestMethod.swift in Sources */,
