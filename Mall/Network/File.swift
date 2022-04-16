@@ -10,28 +10,28 @@ import UIKit
 // Network Service
 
 class NetworkingService {
-    
+
     func loginPostRequest(url: URL,body: [String: Any], completion: @escaping (Result<LoginModel?, Error>) -> Void) {
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.headers = ["Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTg2NTE0MTYsImlzcyI6Imh0dHA6Ly90cmFkZWxpc3QyLTAwMS1zaXRlMS5pdGVtcHVybC5jb20vIiwiYXVkIjoiTGlzdFRyYWRlIn0.aOjU3Ap8g793c0Wzze0XPikT1-c_Hzpw9wKIViZYmZY"]
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
-        
+
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { [self]
             (data, response, error) -> Void in
-            
+
             let httpResponse = response as! HTTPURLResponse
             let statusCode = httpResponse.statusCode
-            
+
             if (statusCode == 200) {
                 do{
                     let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments)
-                    
+
                     var loginNames: LoginModel?
-                    
+
                     if let items = json as? [String: Any] {
                         let name = LoginModel(login: items)
                         loginNames = name
@@ -44,8 +44,8 @@ class NetworkingService {
         }
         task.resume()
     }
-    
-    
+
+
     func requestGet(urlString: String, completion: @escaping (Result<([Category], BestExchange?), Error>) -> Void){
 
         guard let url = URL(string: urlString) else {return}
@@ -92,7 +92,7 @@ class NetworkingService {
                         let beastName = BestExchange(best: beastExchange)
                         bestExchange = beastName
                     }
-                    
+
                     completion(.success((categoris, bestExchange)))
 
                     }catch let jsonError {
@@ -102,17 +102,17 @@ class NetworkingService {
             }
         }.resume()
     }
-    
+
     func sendPost(url: URL, body: [String: Any], complition: @escaping ([String: Any]) -> ()) {
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.headers = ["Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTYwMTEyMjUsImlzcyI6Imh0dHA6Ly90cmFkZWxpc3QyLTAwMS1zaXRlMS5pdGVtcHVybC5jb20vIiwiYXVkIjoiTGlzdFRyYWRlIn0.RNfizbze-UN8goUiBgFxZfMm7D5QkMZk5KmtdROoa4U"]
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
-        
+
         let task = URLSession.shared.dataTask(with: request) { data, _ ,error in
-                        
+
             guard let data = data, error == nil else {
                 return
             }
@@ -165,7 +165,7 @@ class NetworkingService {
         }
         task.resume()
     }
-    
+
     func postRequsetForHomeAndGarden(url: URL,body: [String: Any],completion: @escaping (Result<HomeAndGarden, Error>) -> Void) {
 
         var request = URLRequest(url: url)
@@ -204,28 +204,28 @@ class NetworkingService {
         }
         task.resume()
     }
-    
+
     func searchPropmt(url: URL,body: [String: Any],completion: @escaping (Result<SearchGeneralPrompElement, Error>) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.headers = ["Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTYwMTEyMjUsImlzcyI6Imh0dHA6Ly90cmFkZWxpc3QyLTAwMS1zaXRlMS5pdGVtcHVybC5jb20vIiwiYXVkIjoiTGlzdFRyYWRlIn0.RNfizbze-UN8goUiBgFxZfMm7D5QkMZk5KmtdROoa4U"]
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
-        
+
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) {
             (data, response, error) -> Void in
-            
+
 //            let httpResponse = response as! HTTPURLResponse
 //            let statusCode = httpResponse.statusCode
 //
 //            if (statusCode == 200) {
                 do{
                     let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments)
-                    
+
 //                    var searchResult = [SearchGeneralPrompElement]()
                     var searchResult: SearchGeneralPrompElement?
-                    
+
                     if let products = json as? [String: Any] {
                         let searchName = SearchGeneralPrompElement(searchGeneral: products)
                         searchResult = searchName
@@ -443,7 +443,7 @@ class NetworkingService {
         }
         task.resume()
     }
-    
+
     func requestGetMainCategori(urlString: String, completion: @escaping (Result<MainCategories, Error>) -> Void){
 
         guard let url = URL(string: urlString) else {return}
@@ -466,7 +466,7 @@ class NetworkingService {
                 do {
                     guard let data = data else {return}
                     let json = try JSONSerialization.jsonObject(with: data,options: .allowFragments)
-                    
+
                     var category = [MCategori]()
                     if let cate = json as? [[String:Any]] {
                         for product in cate{
@@ -483,7 +483,7 @@ class NetworkingService {
             }
         }.resume()
     }
-    
+
     func postSubCategories(url: URL,body: [String: Any],completion: @escaping (Result<SubCategory, Error>) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -516,8 +516,8 @@ class NetworkingService {
         }
         task.resume()
     }
-    
-    
+
+
     func postSubAppliances(url: URL,body: [String: Any],completion: @escaping (Result<SubAppliances, Error>) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -551,7 +551,7 @@ class NetworkingService {
         }
         task.resume()
     }
-    
+
     func postSubGetClothsAnd(url: URL,body: [String: Any],completion: @escaping (Result<SubGetClothsAndShows, Error>) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -585,7 +585,7 @@ class NetworkingService {
         }
         task.resume()
     }
-    
+
     func postGetForChildren(url: URL,body: [String: Any],completion: @escaping (Result<SubGetForChildren, Error>) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -620,7 +620,7 @@ class NetworkingService {
         }
         task.resume()
     }
-    
+
     func postJewelryAndAcces(url: URL,body: [String: Any],completion: @escaping (Result<SubGetJewerlyAndAccessories, Error>) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -655,7 +655,7 @@ class NetworkingService {
         }
         task.resume()
     }
-    
+
     func postRequsetFoodAndDrink(url: URL,body: [String: Any],completion: @escaping (Result<SubGetFoodAndDrink, Error>) -> Void) {
 
         var request = URLRequest(url: url)
@@ -727,7 +727,7 @@ class NetworkingService {
         }
         task.resume()
     }
-    
+
     func postRequsetFurniture(url: URL,body: [String: Any],completion: @escaping (Result<SubGetFurniture, Error>) -> Void) {
 
         var request = URLRequest(url: url)
@@ -763,7 +763,7 @@ class NetworkingService {
         }
         task.resume()
     }
-    
+
     func postRequsetTourismAndRest(url: URL,body: [String: Any],completion: @escaping (Result<SubTourismAndRest, Error>) -> Void) {
 
         var request = URLRequest(url: url)
@@ -799,7 +799,7 @@ class NetworkingService {
         }
         task.resume()
     }
-    
+
     func postGetSport(url: URL,body: [String: Any],completion: @escaping (Result<SubSport, Error>) -> Void) {
 
         var request = URLRequest(url: url)
@@ -979,7 +979,7 @@ class NetworkingService {
         }
         task.resume()
     }
-    
+
     func postGetHelathCare(url: URL,body: [String: Any],completion: @escaping (Result<SubGetHealtCare, Error>) -> Void) {
 
         var request = URLRequest(url: url)
@@ -1015,7 +1015,7 @@ class NetworkingService {
         }
         task.resume()
     }
-    
+
     func postGetAcquaintance(url: URL,body: [String: Any],completion: @escaping (Result<SubGetAcquaintance, Error>) -> Void) {
 
         var request = URLRequest(url: url)
@@ -1051,7 +1051,7 @@ class NetworkingService {
         }
         task.resume()
     }
-    
+
     func requestGetFavourite(urlString: String, completion: @escaping (Result<([FavCategory],FavResult?), Error>) -> Void){
 
         guard let url = URL(string: urlString) else {return}
@@ -1063,7 +1063,7 @@ class NetworkingService {
         request.headers = ["Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTYwMTEyMjUsImlzcyI6Imh0dHA6Ly90cmFkZWxpc3QyLTAwMS1zaXRlMS5pdGVtcHVybC5jb20vIiwiYXVkIjoiTGlzdFRyYWRlIn0.RNfizbze-UN8goUiBgFxZfMm7D5QkMZk5KmtdROoa4U"]
 
         request.headers = ["userID": "\(100009)","culture": "am"]
-        
+
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async { [self] in
@@ -1075,9 +1075,9 @@ class NetworkingService {
                 do {
                     guard let data = data else {return}
                     let json = try JSONSerialization.jsonObject(with: data,options: .allowFragments) as! [String:Any]
-                    
+
                     var favCate = [FavCategory]()
-                    
+
                     if let favoriteList = json["favoriteList"] as? [[String:Any]] {
                         for items in favoriteList{
                             if let categ = items["category"] as? [String:Any] {
@@ -1090,11 +1090,11 @@ class NetworkingService {
                                     let cate = FavCategory(favCate: items, adsFav: arrayAds)
                                     favCate.append(cate)
                                 }
-                                
+
                             }
                         }
                     }
-                    
+
                     var favRes: FavResult?
                     if let favResult = json["result"] as? [String:Any]{
                         let favName = FavResult(favRes: favResult)
@@ -1110,7 +1110,7 @@ class NetworkingService {
             }
         }.resume()
     }
-    
+
     func requestPostFavourite(url: URL,body: [String: Any],completion: @escaping (Result<PostFavourite, Error>) -> Void) {
 
         var request = URLRequest(url: url)
@@ -1147,7 +1147,7 @@ class NetworkingService {
         }
         task.resume()
     }
-    
+
     func deleteFavorite(url: URL,completion: @escaping (Result<DeleteFavorite, Error>) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
@@ -1155,16 +1155,16 @@ class NetworkingService {
         request.headers = ["Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTYwMTEyMjUsImlzcyI6Imh0dHA6Ly90cmFkZWxpc3QyLTAwMS1zaXRlMS5pdGVtcHVybC5jb20vIiwiYXVkIjoiTGlzdFRyYWRlIn0.RNfizbze-UN8goUiBgFxZfMm7D5QkMZk5KmtdROoa4U"]
 
         request.headers = ["userID": "\(100009)", "adID" : "\(28)"]
-        
-        
-        
+
+
+
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { [self]
             (data, response, error) -> Void in
 
             let httpResponse = response as! HTTPURLResponse
             let statusCode = httpResponse.statusCode
-            
+
             if (statusCode == 200) {
                 do{
                     let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments)
@@ -1184,28 +1184,28 @@ class NetworkingService {
         }
         task.resume()
     }
-    
+
     func addExchange(url: URL,body: [String: Any],completion: @escaping (Result<AddNewExchange, Error>) -> Void) {
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.headers = ["Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTYwMTEyMjUsImlzcyI6Imh0dHA6Ly90cmFkZWxpc3QyLTAwMS1zaXRlMS5pdGVtcHVybC5jb20vIiwiYXVkIjoiTGlzdFRyYWRlIn0.RNfizbze-UN8goUiBgFxZfMm7D5QkMZk5KmtdROoa4U"]
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
-        
+
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { [self]
             (data, response, error) -> Void in
-            
+
             let httpResponse = response as! HTTPURLResponse
             let statusCode = httpResponse.statusCode
-            
+
             if (statusCode == 200) {
                 do{
                     let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments)
-                    
+
                     var adModel = [NewExchange]()
-                    
+
                     if let products = json as? [[String: Any]] {
                         for product in products {
                             let prop = NewExchange(add: product)
@@ -1221,8 +1221,8 @@ class NetworkingService {
         }
         task.resume()
     }
-    
-    
+
+
     func getMyAdds(urlString: String, completion: @escaping (Result<([AdCategory], AddsResult?), Error>) -> Void){
 
         guard let url = URL(string: urlString) else {return}
@@ -1264,7 +1264,7 @@ class NetworkingService {
                             }
                         }
                     }
-                   
+
                     var adResult: AddsResult?
                     if let adRes = json["result"] as? [String:Any]{
                         let res = AddsResult(add: adRes)

@@ -15,12 +15,10 @@ protocol TableViewCellDelegate: AnyObject {
 class MainPageTableViewCell: UITableViewCell {
     
     @IBOutlet weak var mainCollectionView: UICollectionView!
-
     @IBOutlet weak var sectionText: UILabel!
     
     weak var delegate: TableViewCellDelegate?
     var network : NetworkingService?
-    
     var search = false
     var result : [Ads] = [Ads]()
     var sectionModel : Category?
@@ -28,20 +26,20 @@ class MainPageTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-            self.mainCollectionView.delegate = self
-            self.mainCollectionView.dataSource = self
+        self.mainCollectionView.delegate = self
+        self.mainCollectionView.dataSource = self
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
+    
     func configure(section: Category, searching: Bool, res: [Ads]){
         
-            self.sectionModel = section
-            self.search = searching
-            self.result = res
-            self.mainCollectionView.reloadData()
+        self.sectionModel = section
+        self.search = searching
+        self.result = res
+        self.mainCollectionView.reloadData()
     }
 }
 
@@ -57,12 +55,19 @@ extension MainPageTableViewCell: UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as! MainCollectionViewCell
-        if search{
+        
+        if search {
+            
             let update = result[indexPath.row]
+            cell.configVipImageView(isVip: true)
+            cell.contentView.translatesAutoresizingMaskIntoConstraints = false // must change
             cell.priceLbl.text = update.name
             cell.aboutLbl.text = update.adDescription
             if let url = URL(string: update.image){
-                
+                // Config Cell corners
+                cell.contentView.layer.borderWidth = 0.5
+                cell.contentView.layer.cornerRadius = 10
+                cell.contentView.layer.borderColor = UIColor.brown.cgColor
                 DispatchQueue.main.async {
                     cell.imageView.af.setImage(withURL: url)
                 }
@@ -71,9 +76,18 @@ extension MainPageTableViewCell: UICollectionViewDataSource, UICollectionViewDel
                 cell.imageView.image = UIImage(systemName: "photo.artframe")
             }
         } else {
+            
+            cell.configVipImageView(isVip: true)
             let model = sectionModel?.ads[indexPath.row]
-            cell.priceLbl.text = model?.name// Instance Alamofire extension point.
-            cell.aboutLbl.text = model?.adDescription
+            cell.contentView.translatesAutoresizingMaskIntoConstraints = false //must change
+            
+            cell.priceLbl.text = model?.name ?? ""  // Instance Alamofire extension point.
+            cell.aboutLbl.text = model?.adDescription ?? ""
+            // Config Cell corners
+            cell.contentView.layer.borderWidth = 0.5
+            cell.contentView.layer.cornerRadius = 10
+            cell.contentView.layer.borderColor = UIColor.brown.cgColor
+            
             if let url = URL(string: model?.image ?? "") {
                 
                 DispatchQueue.main.async {
@@ -81,22 +95,20 @@ extension MainPageTableViewCell: UICollectionViewDataSource, UICollectionViewDel
                 }
             } else {
                 cell.imageView.image = UIImage(systemName: "photo.artframe")
-
             }
         }
-        
         return cell
     }
+
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        return CGSize(width: 100, height: 100)
-//    }
-
-
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    //
+    //        return CGSize(width: 100, height: 100)
+    //    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.selectCell(cell: self, indexPath: indexPath)
     }
-    
 }
 

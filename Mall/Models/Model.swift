@@ -70,6 +70,7 @@ struct LoginModel: Encodable {
 
 // MARK: - Ad
 class Ads: Decodable {
+    
     var id, state: Int
     var name: String
     var userID, categoryID: Int
@@ -82,16 +83,16 @@ class Ads: Decodable {
         
         id = ads["id"]  as? Int ?? 0
         state = ads["state"] as? Int ?? 0
-        name = ads["name"] as? String ?? "9090"
+        name = ads["name"] as? String ?? ""
         userID = ads["userID"] as? Int ?? 0
         categoryID = ads["categoryID"] as? Int ?? 0
-        adDescription = ads["description"] as? String ?? "0099"
+        adDescription = ads["description"] as? String ?? ""
         image = ads["image"] as? String ?? "imag"
         owner = ads["owner"] as? Int ?? 0
         isBestPrice = ads["isBestPrice"] as? Bool ?? true
         
         if let adsProp = ads["ads"] as? [Any]{
-            if let adsWith = adsProp[0] as? [String:Any]{
+            if let adsWith = adsProp[0] as? [String:Any] {
                 for _ in adsProp{
                     id = adsWith["id"] as! Int
                     state = adsWith["state"] as! Int
@@ -148,7 +149,7 @@ class BestExchange: Decodable {
 }
 
 //MARK: - Search
-struct Name{
+struct Name {
     var res : [GetExchange]
     init(res: [GetExchange]){
         self.res = res
@@ -440,7 +441,7 @@ class ForElectronics{
 }
 
 
-struct Electronics{
+struct Electronics {
     let id, userID, subCategoryID, mainCategoryID: Int
     let currency, price, salePercent, salePrice: Int
     let countryName, regionName, cityName: String

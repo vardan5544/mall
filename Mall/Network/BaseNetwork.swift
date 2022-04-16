@@ -8,6 +8,8 @@
 import Foundation
 import Alamofire
 
+var api = "https://api.malls.team/"
+
 class BaseNetworkService {
     
     
@@ -72,6 +74,7 @@ class BaseNetworkService {
                 DispatchQueue.main.async {
 
                     do {
+                        
                         let json = try JSONSerialization.jsonObject(with: data) as! [String: Any]
 
                         var categoris = [Category]()

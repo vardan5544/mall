@@ -40,7 +40,7 @@ class MainScreenVC: UIViewController, TableViewCellDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         getData()
-        setupCollectionView()
+        setupTableView()
         setupTopView()
     }
     
@@ -48,20 +48,41 @@ class MainScreenVC: UIViewController, TableViewCellDelegate {
   
     func getData() {
         
+//        model.getGeneralMainPage {[weak self] result in
+//
+//            guard let self = self else { return }
+//
+//            switch result {
+//            case .success(let response):
+//                self.categoris = response.0
+//                self.bestExchange = response.1
+//                //self.categoris?.removeLast()
+//
+//                self.buyPriceLbl.text = "\(self.bestExchange!.buy)$"
+//                self.sailPriceLbl.text = "\(self.bestExchange!.sale)$"
+//
+//                self.mainTableView.reloadData()
+//
+//            case .failure(let error):
+//                print("error", error)
+//            }
+//        }
+        
         model.fetchRequest(urlString: urlString) { [weak self] result in
-            
+
             guard let self = self else { return }
-            
+
             switch result {
             case .success(let response):
                 self.categoris = response.0
                 self.bestExchange = response.1
                 self.categoris?.removeLast()
-                
+
                 self.buyPriceLbl.text = "\(self.bestExchange!.buy)$"
                 self.sailPriceLbl.text = "\(self.bestExchange!.sale)$"
-                
+
                 self.mainTableView.reloadData()
+
             case .failure(let error):
                 print("error", error)
             }
@@ -79,7 +100,7 @@ class MainScreenVC: UIViewController, TableViewCellDelegate {
     
     // MARK: - Setup Table View
     
-    private func setupCollectionView() {
+    private func setupTableView() {
         
         mainTableView.delegate = self
         mainTableView.dataSource = self
@@ -96,12 +117,12 @@ extension MainScreenVC: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainPageTableViewCell") as! MainPageTableViewCell
         
-        if searching{
+        if searching {
        
-            
             cell.mainCollectionView.tag = indexPath.section
             cell.configure(section : categoris![indexPath.row], searching: true, res: searchItems)
         }else {
+            
             cell.mainCollectionView.tag = indexPath.section
             cell.configure(section: categoris![indexPath.row], searching: false, res: [])
             cell.sectionText.text = cell.sectionModel?.name
@@ -112,7 +133,7 @@ extension MainScreenVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 320
     }
     
     
