@@ -20,7 +20,7 @@ class MainScreenVC: UIViewController, TableViewCellDelegate {
     @IBOutlet weak var buyPriceLbl: UILabel!
     @IBOutlet weak var sailLbl: UILabel!
     @IBOutlet weak var sailPriceLbl: UILabel!
-    
+        
     var model = MainPageViewModel()
     var sectionModel = [Section]()
     
@@ -124,6 +124,7 @@ extension MainScreenVC: UITableViewDelegate, UITableViewDataSource {
         }else {
             
             guard let categoris = categoris else { return UITableViewCell() }
+            
             cell.mainCollectionView.tag = indexPath.section
             cell.configure(section: categoris[indexPath.row], searching: false, res: categoris[indexPath.row].ads)
             cell.sectionText.text = cell.sectionModel?.name
@@ -142,7 +143,9 @@ extension MainScreenVC: UITableViewDelegate, UITableViewDataSource {
         
         //MARK: Amen cell-i selectic ira ejy gna (indexov)
         let cell = mainTableView.dequeueReusableCell(withIdentifier: "MainPageTableViewCell") as! MainPageTableViewCell
-
+        //cell.delegate = self
+        
+        
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
        // let vc = storyBoard.instantiateViewController(withIdentifier: "realEstate") as! RealEstateVC
         let index = indexPath.row
@@ -163,5 +166,11 @@ extension MainScreenVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func getSelectedAd(ad: Ads) {
+        
+        let vc = UIStoryboard(name: "AdsDetail", bundle: .main).instantiateViewController(withIdentifier: "AdsDetailVC") as? AdsDetailVC
+        vc?.configAds(ads: ad)
+        self.present(vc!, animated: true, completion: nil)
+    }
 }
 

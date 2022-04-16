@@ -46,6 +46,7 @@
 		CAF9B1C32809F3B300CFDF88 /* URLBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9B1C12809F3B300CFDF88 /* URLBuilderProtocol.swift */; };
 		CAF9B1CB280AC42A00CFDF88 /* AdsDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF9B1CA280AC42A00CFDF88 /* AdsDetail.storyboard */; };
 		CAF9B1CD280AC44500CFDF88 /* AdsDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9B1CC280AC44500CFDF88 /* AdsDetailVC.swift */; };
+		CAF9B1CF280ACDBC00CFDF88 /* AdsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9B1CE280ACDBC00CFDF88 /* AdsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		CAF9B1C12809F3B300CFDF88 /* URLBuilderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLBuilderProtocol.swift; sourceTree = "<group>"; };
 		CAF9B1CA280AC42A00CFDF88 /* AdsDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdsDetail.storyboard; sourceTree = "<group>"; };
 		CAF9B1CC280AC44500CFDF88 /* AdsDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsDetailVC.swift; sourceTree = "<group>"; };
+		CAF9B1CE280ACDBC00CFDF88 /* AdsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,6 +432,7 @@
 		CAF9B1C7280AC3F800CFDF88 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CAF9B1CE280ACDBC00CFDF88 /* AdsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				CAF9B1C32809F3B300CFDF88 /* URLBuilderProtocol.swift in Sources */,
 				CAD6444628069F3D00AFFB9B /* BaseNetwork.swift in Sources */,
 				CAF9B1BE2809F39800CFDF88 /* MallBaseURL.swift in Sources */,
+				CAF9B1CF280ACDBC00CFDF88 /* AdsModel.swift in Sources */,
 				CAD6445228074E6100AFFB9B /* RegistrationVC.swift in Sources */,
 				CAD6444B28074E0C00AFFB9B /* RegistrationModel.swift in Sources */,
 				CAF9B1CD280AC44500CFDF88 /* AdsDetailVC.swift in Sources */,

@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,10 +14,34 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cqS-lo-th7">
+                                <rect key="frame" x="0.0" y="108" width="414" height="299"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXQ-Vc-djt">
+                                <rect key="frame" x="20" y="437" width="374" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBrownColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cqS-lo-th7" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.333705" id="2Tr-t5-zje"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="gXQ-Vc-djt" secondAttribute="trailing" constant="20" id="Ckm-bV-gJS"/>
+                            <constraint firstItem="cqS-lo-th7" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="Fa6-TE-I2S"/>
+                            <constraint firstItem="gXQ-Vc-djt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="PjG-7o-aJj"/>
+                            <constraint firstItem="cqS-lo-th7" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="YXM-Lq-O9k"/>
+                            <constraint firstItem="gXQ-Vc-djt" firstAttribute="top" secondItem="cqS-lo-th7" secondAttribute="bottom" constant="30" id="mV5-mQ-cJ6"/>
+                            <constraint firstItem="cqS-lo-th7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="zs4-tE-Grk"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Tcg-5B-UMU"/>
+                    <connections>
+                        <outlet property="adImageView" destination="cqS-lo-th7" id="zxc-v7-wsZ"/>
+                        <outlet property="titleLabel" destination="gXQ-Vc-djt" id="P0x-Ai-zi8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -43,9 +66,4 @@
             <point key="canvasLocation" x="0.0" y="71.651785714285708"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>

@@ -10,6 +10,7 @@ import UIKit
 protocol TableViewCellDelegate: AnyObject {
     
     func selectCell(cell: MainPageTableViewCell, indexPath: IndexPath)
+    func getSelectedAd(ad: Ads)
 }
 
 class MainPageTableViewCell: UITableViewCell {
@@ -60,7 +61,7 @@ extension MainPageTableViewCell: UICollectionViewDataSource, UICollectionViewDel
             
             let update = result[indexPath.row]
             cell.configVipImageView(isVip: true)
-            cell.contentView.translatesAutoresizingMaskIntoConstraints = false // must change
+           // cell.contentView.translatesAutoresizingMaskIntoConstraints = false // must change
             cell.priceLbl.text = update.name
             cell.aboutLbl.text = update.adDescription
             if let url = URL(string: update.image){
@@ -79,7 +80,7 @@ extension MainPageTableViewCell: UICollectionViewDataSource, UICollectionViewDel
             
             cell.configVipImageView(isVip: true)
             let model = sectionModel?.ads[indexPath.row]
-            cell.contentView.translatesAutoresizingMaskIntoConstraints = false //must change
+           // cell.contentView.translatesAutoresizingMaskIntoConstraints = false //must change
             
             cell.priceLbl.text = model?.name ?? ""  // Instance Alamofire extension point.
             cell.aboutLbl.text = model?.adDescription ?? ""
@@ -109,7 +110,16 @@ extension MainPageTableViewCell: UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.selectCell(cell: self, indexPath: indexPath)
+        
         print("Selected item \(indexPath), \(result[indexPath.row].name)")
+        delegate?.getSelectedAd(ad: result[indexPath.row])
+        
+        // Config Detail VC.
+        
+   
+        
+        //self.window?.rootViewController = vc!
+
     }
 }
 
