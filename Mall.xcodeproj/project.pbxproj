@@ -12,6 +12,7 @@
 		B69AB0C428092C70008E7B84 /* ValidEmailAndPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69AB0C328092C70008E7B84 /* ValidEmailAndPassword.swift */; };
 		B69AB0C628092DA0008E7B84 /* NerworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69AB0C528092DA0008E7B84 /* NerworkingService.swift */; };
 		B69AB0C8280931A1008E7B84 /* MyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69AB0C7280931A1008E7B84 /* MyTabBar.swift */; };
+		B6B6B3A6280A659400EF618E /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B6B3A5280A659400EF618E /* UserProfileVC.swift */; };
 		CA33E1E12804E73900804EA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA33E1E02804E73900804EA1 /* AppDelegate.swift */; };
 		CA33E1E32804E73900804EA1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA33E1E22804E73900804EA1 /* SceneDelegate.swift */; };
 		CA33E1E52804E73900804EA1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA33E1E42804E73900804EA1 /* ViewController.swift */; };
@@ -30,6 +31,7 @@
 		B69AB0C328092C70008E7B84 /* ValidEmailAndPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ValidEmailAndPassword.swift; path = Mall/User/Login/ValidEmailAndPassword.swift; sourceTree = SOURCE_ROOT; };
 		B69AB0C528092DA0008E7B84 /* NerworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NerworkingService.swift; path = Mall/MainPages/NerworkingService.swift; sourceTree = SOURCE_ROOT; };
 		B69AB0C7280931A1008E7B84 /* MyTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBar.swift; sourceTree = "<group>"; };
+		B6B6B3A5280A659400EF618E /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		CA33E1DD2804E73900804EA1 /* Mall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA33E1E02804E73900804EA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA33E1E22804E73900804EA1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,14 @@
 			path = MainPages;
 			sourceTree = "<group>";
 		};
+		B6B6B3A4280A655600EF618E /* TabBarPages */ = {
+			isa = PBXGroup;
+			children = (
+				B6B6B3A5280A659400EF618E /* UserProfileVC.swift */,
+			);
+			path = TabBarPages;
+			sourceTree = "<group>";
+		};
 		CA33E1D42804E73900804EA1 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +113,7 @@
 				CAA7FA8F28057B0200ED2206 /* Splash */,
 				CAA7FA8E28057AF300ED2206 /* UI */,
 				CAA7FA842805782700ED2206 /* Models */,
+				B6B6B3A4280A655600EF618E /* TabBarPages */,
 				B65EA445280759AF00206041 /* MainPages */,
 				CAA7FA872805792300ED2206 /* Network */,
 				CAA7FA862805791800ED2206 /* User */,
@@ -315,6 +326,7 @@
 				CA33E1E52804E73900804EA1 /* ViewController.swift in Sources */,
 				B69AB0C628092DA0008E7B84 /* NerworkingService.swift in Sources */,
 				CA33E1E12804E73900804EA1 /* AppDelegate.swift in Sources */,
+				B6B6B3A6280A659400EF618E /* UserProfileVC.swift in Sources */,
 				CA33E1E32804E73900804EA1 /* SceneDelegate.swift in Sources */,
 				B65EA44828075A1200206041 /* MainPage.swift in Sources */,
 				B69AB0C8280931A1008E7B84 /* MyTabBar.swift in Sources */,
