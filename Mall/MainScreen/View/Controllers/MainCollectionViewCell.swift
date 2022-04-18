@@ -16,6 +16,8 @@ class MainCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var priceLbl: UILabel!
     @IBOutlet weak var aboutLbl: UILabel!
     
+    var ad: Ads?
+    
     override func prepareForReuse() {
         imageView.image = UIImage(named: "mall")
         priceLbl.text = ""

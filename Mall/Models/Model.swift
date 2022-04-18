@@ -9,6 +9,34 @@ import Foundation
 import UIKit
 
 
+// MARK: - Protocol
+
+protocol GlobalProtocol { }
+
+
+//struct GlobalModel {
+//    
+//    func modelToDict(categoryID: Int) -> GlobalProtocol {
+//        
+//        switch categoryID {
+//            
+//       
+//            
+//            //return GetFromHomeAndGardenElement(homeAndGarden: <#T##[String : Any]#>)
+//            
+//            
+//        default: break
+//            
+//            
+//            
+//            
+//            
+//            
+//            
+//        }
+//        
+//    }
+//}
 // MARK: - Register Model
 
 struct RegisterModel: Encodable {
@@ -230,7 +258,7 @@ class HomeAndGarden{
     }
 }
 
-struct GetFromHomeAndGardenElement: Decodable {
+struct GetFromHomeAndGardenElement: GlobalProtocol, Decodable {
     
     let id, userID, subCategoryID, mainCategoryID: Int
     let currency, price, salePercent, salePrice: Int
@@ -305,7 +333,7 @@ class ForRealEstate{
     }
 }
 
-struct RealEstate: Codable {
+struct RealEstate: GlobalProtocol, Codable {
     
     let id, userID, subCategoryID, mainCategoryID: Int
     let currency, price, salePercent, salePrice: Int
@@ -366,6 +394,7 @@ class ForVehicle{
 }
 
 struct Vehicle : Codable {
+    
     let id, userID, subCategoryID, mainCategoryID: Int
     let currency, price, salePercent, salePrice: Int
     let countryName, regionName, cityName: String
@@ -458,6 +487,7 @@ class ForElectronics{
 
 
 struct Electronics {
+    
     let id, userID, subCategoryID, mainCategoryID: Int
     let currency, price, salePercent, salePrice: Int
     let countryName, regionName, cityName: String

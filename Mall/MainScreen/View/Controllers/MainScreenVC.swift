@@ -11,11 +11,10 @@ import Alamofire
 import SwiftyJSON
 
 class MainScreenVC: UIViewController, TableViewCellDelegate {
-
+    
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var serachBar: UISearchBar!
-
     @IBOutlet weak var buyLbl: UILabel!
     @IBOutlet weak var buyPriceLbl: UILabel!
     @IBOutlet weak var sailLbl: UILabel!
@@ -48,39 +47,18 @@ class MainScreenVC: UIViewController, TableViewCellDelegate {
   
     func getData() {
         
-//        model.getGeneralMainPage {[weak self] result in
-//
-//            guard let self = self else { return }
-//
-//            switch result {
-//            case .success(let response):
-//                self.categoris = response.0
-//                self.bestExchange = response.1
-//                //self.categoris?.removeLast()
-//
-//                self.buyPriceLbl.text = "\(self.bestExchange!.buy)$"
-//                self.sailPriceLbl.text = "\(self.bestExchange!.sale)$"
-//
-//                self.mainTableView.reloadData()
-//
-//            case .failure(let error):
-//                print("error", error)
-//            }
-//        }
-        
         model.fetchRequest(urlString: urlString) { [weak self] result in
 
             guard let self = self else { return }
 
             switch result {
             case .success(let response):
+                
                 self.categoris = response.0
                 self.bestExchange = response.1
                 self.categoris?.removeLast()
-
                 self.buyPriceLbl.text = "\(self.bestExchange!.buy)$"
                 self.sailPriceLbl.text = "\(self.bestExchange!.sale)$"
-
                 self.mainTableView.reloadData()
 
             case .failure(let error):
@@ -164,19 +142,11 @@ extension MainScreenVC: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Open Ad detail page
     
-    func getSelectedAd(ad: Ads) {
+    func getSelectedAd(ad: Ads, category: Category?) {
         
         let vc = UIStoryboard(name: "AdsDetail", bundle: .main).instantiateViewController(withIdentifier: "AdsDetailVC") as? AdsDetailVC
-        vc?.configAds(ads: ad)
-        //self.tabBarController?.navigationController?.pushViewController(vc!, animated: true)
-
+        vc?.configAds(ads: ad, category: category)
         self.present(vc!, animated: true, completion: nil)
-        
-//        for (key, value) in ad.dictionary {
-//
-//            print(key, value)
-//            print(ad.dictionary.count)
-//        }
     }
 }
 

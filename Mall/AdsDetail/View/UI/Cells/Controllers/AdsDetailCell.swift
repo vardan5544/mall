@@ -26,7 +26,7 @@ class AdsDetailCell: UITableViewCell {
     }
     
     func configElements(key: String, value: Any) {
-        
+      
         // Test
         self.key.text = key
         self.value.text = "\(value)"

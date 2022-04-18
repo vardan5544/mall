@@ -28,6 +28,7 @@ class AdsDetailVC: UIViewController {
     
     var ads: Ads?
     var isFavorite: Bool = false
+    var category: Category?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +51,7 @@ class AdsDetailVC: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        tableViewHeight.constant += CGFloat(rowHeight * values.count) - 200
+        tableViewHeight.constant += CGFloat(rowHeight * values.count) - 200 // change size
         self.view.layoutIfNeeded()
     }
     
@@ -96,8 +97,12 @@ class AdsDetailVC: UIViewController {
         self.titleLabel.text = ads.name
     }
     
-    func configAds(ads: Ads) {
+    // MARK: - Config Ads and Category
+    
+    func configAds(ads: Ads, category: Category?) {
+        
         self.ads = ads
+        self.category = category
     }
     
     // MARK: - Favorite Button click action

@@ -10,7 +10,7 @@ import UIKit
 protocol TableViewCellDelegate: AnyObject {
     
     //func selectCell(cell: MainPageTableViewCell, indexPath: IndexPath)
-    func getSelectedAd(ad: Ads)
+    func getSelectedAd(ad: Ads, category: Category?)
 }
 
 class MainPageTableViewCell: UITableViewCell {
@@ -101,7 +101,7 @@ extension MainPageTableViewCell: UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        // delegate?.selectCell(cell: self, indexPath: indexPath)
         print("Selected item \(indexPath), \(result[indexPath.row].name)")
-        delegate?.getSelectedAd(ad: result[indexPath.row])
+        delegate?.getSelectedAd(ad: result[indexPath.row], category: sectionModel)
     }
 }
 
