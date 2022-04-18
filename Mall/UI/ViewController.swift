@@ -19,14 +19,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
     
+    
+    
+    
     // vars and constants
     var valid = Validation()
     var networkService = NetworkingService()
     var loginUSer: LoginModel!
     
     var urlString = URL(string: api + "/api/Identity/Login")
-
-    
     
     //Actions
     @IBAction func loginButtonEvent(_ sender: Any) {

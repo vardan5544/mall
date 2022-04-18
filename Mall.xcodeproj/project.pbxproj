@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F78ACF45B2D1F05F8C5A2D2 /* Pods_Mall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232383D3C2D61D4C974ADFF0 /* Pods_Mall.framework */; };
 		B65EA44828075A1200206041 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65EA44728075A1200206041 /* MainPage.swift */; };
+		B6896106280C5A2400E6420B /* ChangeProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6896105280C5A2400E6420B /* ChangeProfile.swift */; };
 		B69AB0C428092C70008E7B84 /* ValidEmailAndPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69AB0C328092C70008E7B84 /* ValidEmailAndPassword.swift */; };
 		B69AB0C628092DA0008E7B84 /* NerworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69AB0C528092DA0008E7B84 /* NerworkingService.swift */; };
 		B69AB0C8280931A1008E7B84 /* MyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69AB0C7280931A1008E7B84 /* MyTabBar.swift */; };
@@ -28,6 +29,7 @@
 		4CED66300A4EBBD9F09EFDEB /* Pods-Mall.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mall.release.xcconfig"; path = "Target Support Files/Pods-Mall/Pods-Mall.release.xcconfig"; sourceTree = "<group>"; };
 		A13D05DD128DD6A415BB9833 /* Pods-Mall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mall.debug.xcconfig"; path = "Target Support Files/Pods-Mall/Pods-Mall.debug.xcconfig"; sourceTree = "<group>"; };
 		B65EA44728075A1200206041 /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
+		B6896105280C5A2400E6420B /* ChangeProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeProfile.swift; sourceTree = "<group>"; };
 		B69AB0C328092C70008E7B84 /* ValidEmailAndPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ValidEmailAndPassword.swift; path = Mall/User/Login/ValidEmailAndPassword.swift; sourceTree = SOURCE_ROOT; };
 		B69AB0C528092DA0008E7B84 /* NerworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NerworkingService.swift; path = Mall/MainPages/NerworkingService.swift; sourceTree = SOURCE_ROOT; };
 		B69AB0C7280931A1008E7B84 /* MyTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBar.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				B6B6B3A5280A659400EF618E /* UserProfileVC.swift */,
+				B6896105280C5A2400E6420B /* ChangeProfile.swift */,
 			);
 			path = TabBarPages;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				B69AB0C8280931A1008E7B84 /* MyTabBar.swift in Sources */,
 				CAA7FA8B2805797500ED2206 /* URLModel.swift in Sources */,
 				CAA7FA892805793200ED2206 /* Model.swift in Sources */,
+				B6896106280C5A2400E6420B /* ChangeProfile.swift in Sources */,
 				B69AB0C428092C70008E7B84 /* ValidEmailAndPassword.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

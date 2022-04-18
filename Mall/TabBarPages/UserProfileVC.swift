@@ -9,33 +9,42 @@ import UIKit
 
 class UserProfileVC: UIViewController {
     
+    //outlets
     @IBOutlet weak var profileLabel: UILabel!
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var profileDataBackground: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var accauntDataBackground: UILabel!
+    @IBOutlet weak var tableViewUserProfileVC: UITableView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var mailLabel: UILabel!
+    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var balanceLabel: UILabel!
     
-    @IBOutlet weak var updateProfileLabel: UILabel!
-    @IBOutlet weak var resetPasswordLabel: UILabel!
-    @IBOutlet weak var myAddsLabel: UILabel!
-    @IBOutlet weak var messengerLabel: UILabel!
-    
-    
-    
+    //actions
+    @IBAction func logoutButton(_ sender: Any) {
+        print("Logout!")
+    }
     
     
     // properties
     var textArrays = [
-            "Profile", "Logout"
+        "Update profile", "Reset password", "My adds", "Messenger"
     ]
     
+    @objc func didGetNotification(_ notification: Notification){
+        let name = notification.object as! String
+        nameLabel.text = name
+    }
     
     //Outlets UI configurations
     func uiConfig () {
         // profileLabel config
         profileLabel.textColor = .black
         profileLabel.layer.backgroundColor = CGColor(red: 1.0, green: 0, blue: 0.1, alpha: 0.9)
-        profileLabel.text = textArrays[0]
+        profileLabel.text = "Profile"
         profileLabel.layer.cornerRadius = 7
         profileLabel.layer.borderWidth = 1
         profileLabel.layer.borderColor = CGColor(gray: 0.4, alpha: 0.4)
@@ -53,8 +62,6 @@ class UserProfileVC: UIViewController {
         profileDataBackground.layer.borderColor = CGColor(gray: 0.4, alpha: 0.4)
         profileDataBackground.layer.cornerRadius = 7
 
-
-        
         //profileImage
         profileImage.layer.shadowRadius = 0.1
         profileImage.layer.shadowOpacity = 0.1
@@ -64,40 +71,48 @@ class UserProfileVC: UIViewController {
         accauntDataBackground.layer.borderColor = CGColor(gray: 0.4, alpha: 0.4)
         accauntDataBackground.layer.cornerRadius = 7
         
-        //updateProfileLabel
-        updateProfileLabel.layer.borderWidth = 1
-        updateProfileLabel.layer.borderColor = CGColor(gray: 0.4, alpha: 0.4)
-        updateProfileLabel.layer.cornerRadius = 7
-        
-        //resetPasswordLabel
-        resetPasswordLabel.layer.borderWidth = 1
-        resetPasswordLabel.layer.borderColor = CGColor(gray: 0.4, alpha: 0.4)
-        resetPasswordLabel.layer.cornerRadius = 7
-        
-        //myAddsLabel
-        myAddsLabel.layer.borderWidth = 1
-        myAddsLabel.layer.borderColor = CGColor(gray: 0.4, alpha: 0.4)
-        myAddsLabel.layer.cornerRadius = 7
-        
-        //messengerLabel
-        messengerLabel.layer.borderWidth = 1
-        messengerLabel.layer.borderColor = CGColor(gray: 0.4, alpha: 0.4)
-        messengerLabel.layer.cornerRadius = 7
-        
-    }
-    
-    
+      
+    }// uiConfig
+
     // viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         uiConfig()
+        tableViewUserProfileVC.dataSource = self
+        tableViewUserProfileVC.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didGetNotification(_:)), name: Notification.Name("text"), object: nil)
     }
-    
-    
-    
-    
 
-    
 }// UserProfileVC class
 
+
+extension UserProfileVC: UITableViewDataSource, UITableViewDelegate {
+    // TableView
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return textArrays.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableViewUserProfileVC.dequeueReusableCell(withIdentifier: "profileCell1111`")
+        if cell == nil {
+            cell = UITableViewCell(style: .default, reuseIdentifier: "profileCell1111")
+        }
+        
+        cell!.textLabel?.text = textArrays[indexPath.row]
+        
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let index = indexPath.row
+        if index == 0 {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "changeProfile") as! ChangeProfile
+            //present(vc, animated: true, completion: nil)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+    }
+}// tablewView extension
 
