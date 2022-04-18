@@ -18,24 +18,21 @@ class AdsDetailVC: UIViewController {
     @IBOutlet weak var contactButton: UIButton!
     @IBOutlet weak var adsDetailTV: UITableView!
     @IBOutlet weak var mainScrollView: UIScrollView!
-    
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
-    let rowHeight = 70
+    let rowHeight = 50
     
-    var values: [String: Any] = ["Title": "jijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijijiji", "Price": 123, "Morkur": "Jajumbaa", "Title1": "llp", "Price1": 123, "Morkur1": "Jajumbajijijijijijijijijijijijia", "Title2": "", "Price2": 123, "Morkur2": "Jajumbaa", "Title3": "", "Price3": 123, "Morkur3": "Jajumbajijijijijijijijijijia"]
+    var values: [String: Any] = ["Title": "Data", "Price": 123, "Title2": "Data2", "Title3": "Data3", "Price1": 123, "Morkur1": "Jajumbajijijijijijijijijijijijia", "Title4": "", "Price2": 123, "Morkur2": "Jajumbaa", "Title5": "", "Price3": 123, "Morkur3": "Jajumbajijijijijijijijijijia"]
     var key = [String]()
     var valu = [Any]()
     
     var ads: Ads?
     var isFavorite: Bool = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //adsDetailTV.frame.size.height += (self.view.bounds.height + CGFloat(60 * values.count))
-        //adsDetailTV.layoutIfNeeded()
-//        mainContentView.layoutIfNeeded()
+        // Test
         for (key, value) in values {
             
             self.key.append(key)
@@ -48,28 +45,13 @@ class AdsDetailVC: UIViewController {
         configFavoriteButton() // favorite button
         configElements()
         adImageCVDelegates()
-        //mainScrollView.contentOffset = CGPoint(x: 0, y: mainScrollView.frame.height + 200)
-       // self.view.layoutIfNeeded()
-        //mainScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 350, right: 0)
-        
-  }
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-            tableViewHeight.constant = adsDetailTV.contentSize.height
-
-//        tableViewHeight.constant = adsDetailTV.contentSize.height
-//        //adsDetailTV.frame.size.height += CGFloat(rowHeight * values.count)
-//        //tableViewHeight.constant += CGFloat(rowHeight * values.count)
-        self.view.layoutIfNeeded()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//        //adsDetailTV.frame.size.height += CGFloat(rowHeight * values.count)
-//        //tableViewHeight.constant += CGFloat(rowHeight * values.count)
-//        self.view.layoutIfNeeded()
         
+        tableViewHeight.constant += CGFloat(rowHeight * values.count) - 200
+        self.view.layoutIfNeeded()
     }
     
     // MARK: - Config TableView
@@ -77,8 +59,6 @@ class AdsDetailVC: UIViewController {
     func configTableView() {
         adsDetailTV.register(UINib(nibName: "AdsContactCell", bundle: .main), forCellReuseIdentifier: "AdsContactCell")
         adsDetailTV.register(UINib(nibName: "AdsDetailCell", bundle: .main), forCellReuseIdentifier: "AdsDetailCell")
-        //adsDetailTV.estimatedRowHeight = 100
-        //adsDetailTV.rowHeight = UITableView.automaticDimension
         adsDetailTV.delegate = self
         adsDetailTV.dataSource = self
     }
@@ -111,27 +91,9 @@ class AdsDetailVC: UIViewController {
     func configElements() {
         
         guard let ads = ads else { return }
-
+        
         self.contactButton.setTitle("\(ads.id)", for: .normal)
         self.titleLabel.text = ads.name
-        //self.adPriceLabel.text = ads.
-        DispatchQueue.main.async { [weak self] in
-            
-            guard let self = self else { return }
-            print(ads.id, "AD ID")
-            if ads.image != "" {
-                
-                if let data = try? Data(contentsOf: URL(string: ads.image)!) {
-                //self.adImageView.image = UIImage(data: data)
-                }
-                
-            } else if ads.image == "" {
-                
-                //self.adImageView.image = UIImage(systemName: "photo.artframe")
-                //self.adImageView.tintColor = UIColor.gray
-            }
-        }
-        print(ads.name, "Ads Page Print")
     }
     
     func configAds(ads: Ads) {
@@ -163,36 +125,28 @@ extension AdsDetailVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(adImageCV.contentOffset.x / self.view.frame.width, "Content offset x")
-                imagePageControll.currentPage = Int((adImageCV.contentOffset.x / self.view.frame.width))
+        imagePageControll.currentPage = Int((adImageCV.contentOffset.x / self.view.frame.width))
     }
-    
-
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//
-//        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: self.view.bounds.width, height: self.view.bounds.height)
     }
-
 }
 
 extension AdsDetailVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-
         return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if section == 0 {
-
+            
             return values.count
         } else if section == 1 {
-            print(values.count)
+            
             return 1
         }
         return 0
@@ -203,27 +157,26 @@ extension AdsDetailVC: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 1 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "AdsContactCell", for: indexPath) as? AdsContactCell
-
+            
             return cell!
         } else if indexPath.section == 0 {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AdsDetailCell", for: indexPath) as? AdsDetailCell
-        
-        
-        cell?.configElements(key: key[indexPath.row], value: valu[indexPath.row])
-        return cell!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AdsDetailCell", for: indexPath) as? AdsDetailCell
+            
+            
+            cell?.configElements(key: key[indexPath.row], value: valu[indexPath.row])
+            return cell!
         }
         
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       // adsDetailTV.frame.size.height = CGFloat(150 * values.count)
-        //self.view.layoutIfNeeded()
-       // if indexPath.section == 0 {
-        return CGFloat(rowHeight)
-//        } else {
-//            return 200
-//        }
+ 
+        if indexPath.section == 0 {
+            return CGFloat(rowHeight)
+        } else {
+            return 200
+        }
     }
 }
 
