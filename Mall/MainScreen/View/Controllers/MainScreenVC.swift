@@ -135,7 +135,7 @@ extension MainScreenVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 320
+        return 350
     }
     
     
@@ -143,7 +143,6 @@ extension MainScreenVC: UITableViewDelegate, UITableViewDataSource {
         
         //MARK: Amen cell-i selectic ira ejy gna (indexov)
         let cell = mainTableView.dequeueReusableCell(withIdentifier: "MainPageTableViewCell") as! MainPageTableViewCell
-        //cell.delegate = self
         
         
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -154,23 +153,30 @@ extension MainScreenVC: UITableViewDelegate, UITableViewDataSource {
        // self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func selectCell(cell: MainPageTableViewCell, indexPath: IndexPath) {
-        if let tableIndexPath = mainTableView.indexPath(for: cell){
-            let item = categoris![tableIndexPath.row].ads[indexPath.row]
-            _ = UIStoryboard(name: "Main", bundle: nil)
-            //let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! DetailVC
-//            vc.adsId = item.id
-//            vc.tableIndex = tableIndexPath.row
-//            vc.collectionIndex = indexPath.row
-            //self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
+//    func selectCell(cell: MainPageTableViewCell, indexPath: IndexPath) {
+//        if let tableIndexPath = mainTableView.indexPath(for: cell){
+//            let item = categoris![tableIndexPath.row].ads[indexPath.row]
+//           // let st = UIStoryboard(name: "AdsDetail", bundle: nil)
+//           // let vc = st.instantiateViewController(withIdentifier: "AdsDetailVC") as! AdsDetailVC
+//            //self.navigationController?.pushViewController(vc, animated: true)
+//        }
+//    }
+    
+    // MARK: - Open Ad detail page
     
     func getSelectedAd(ad: Ads) {
         
         let vc = UIStoryboard(name: "AdsDetail", bundle: .main).instantiateViewController(withIdentifier: "AdsDetailVC") as? AdsDetailVC
         vc?.configAds(ads: ad)
+        //self.tabBarController?.navigationController?.pushViewController(vc!, animated: true)
+
         self.present(vc!, animated: true, completion: nil)
+        
+//        for (key, value) in ad.dictionary {
+//
+//            print(key, value)
+//            print(ad.dictionary.count)
+//        }
     }
 }
 

@@ -106,7 +106,20 @@ class Ads: Decodable {
                 }
             }
         }
+    }
+    
+    var dictionary: [String: Any] {
         
+        return [
+            "id": id,
+            "state": state,
+            "name": name,
+            "userID": userID,
+            "categoryID": categoryID,
+            "adDescription": adDescription,
+            "image": image,
+            "owner": owner,
+            "isBestPrice": isBestPrice]
     }
 }
 
@@ -218,6 +231,7 @@ class HomeAndGarden{
 }
 
 struct GetFromHomeAndGardenElement: Decodable {
+    
     let id, userID, subCategoryID, mainCategoryID: Int
     let currency, price, salePercent, salePrice: Int
     let countryName, regionName, cityName: String
@@ -232,6 +246,7 @@ struct GetFromHomeAndGardenElement: Decodable {
     let productState: Int
     
     init(homeAndGarden: [String: Any]) {
+        
         id = homeAndGarden["id"] as! Int
         userID = homeAndGarden["userID"] as! Int
         subCategoryID = homeAndGarden["subCategoryID"] as! Int
@@ -291,6 +306,7 @@ class ForRealEstate{
 }
 
 struct RealEstate: Codable {
+    
     let id, userID, subCategoryID, mainCategoryID: Int
     let currency, price, salePercent, salePrice: Int
     let countryName, regionName, cityName: String
@@ -304,7 +320,7 @@ struct RealEstate: Codable {
     let imagesList: [String]
     let space, constructionType, paymentTime, rooms: Int
     let floor: Int
-    
+
     init(realEstate: [String:Any]) {
         id = realEstate["id"] as! Int
         userID = realEstate["userID"] as! Int
