@@ -108,11 +108,21 @@ extension UserProfileVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.row
         if index == 0 {
-            let vc = storyboard?.instantiateViewController(withIdentifier: "changeProfile") as! ChangeProfile
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let changeProfileVc = storyBoard.instantiateViewController(withIdentifier: "changeProfile") as! ChangeProfile
             //present(vc, animated: true, completion: nil)
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+            self.navigationController?.pushViewController(changeProfileVc, animated: true)
+            changeProfileVc.getProfileImageClosure = { [weak self] image in
+                self?.profileImage.image = image
+            }
+            
+        } /*else if index == 2 {
+           let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+           let addsVc = storyBoard.instantiateViewController(withIdentifier: "myAdds") as! MyAddsVC
+           self.navigationController?.pushViewController(addsVc, animated: true)
+        }*/
         
     }
 }// tablewView extension
 
+struct Example_Previews: PreviewProvider
