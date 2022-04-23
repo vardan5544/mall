@@ -1,8 +1,8 @@
 PODS:
   - Alamofire (5.5.0)
   - AlamofireImage (4.2.0):
-    - Alamofire (~> 5.4)
   - SwiftyJSON (5.0.1)
+
 
 DEPENDENCIES:
   - Alamofire
