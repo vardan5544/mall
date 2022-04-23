@@ -125,3 +125,4 @@ extension UserProfileVC: UITableViewDataSource, UITableViewDelegate {
     }
 }// tablewView extension
 
+struct Example_Previews: PreviewProvider

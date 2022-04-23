@@ -7,7 +7,9 @@ target 'Mall' do
 
 pod 'AlamofireImage'
 pod 'Alamofire'
-pod 'SwiftyJSON' 
+pod 'SwiftyJSON'
+
+
 
   # Pods for Mall
 
