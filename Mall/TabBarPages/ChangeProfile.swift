@@ -14,6 +14,10 @@ class ChangeProfile: UIViewController, UIImagePickerControllerDelegate & UINavig
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var updateButton: UIButton!
     
+    //properties
+    typealias Closure = (UIImage) -> ()
+    var getProfileImageClosure: Closure?
+    
     //UICOnfig
     func uiConfig() {
         
@@ -42,6 +46,8 @@ class ChangeProfile: UIViewController, UIImagePickerControllerDelegate & UINavig
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(gesture:)))
         changeProfileImage.addGestureRecognizer(tapGesture)
         changeProfileImage.isUserInteractionEnabled = true
+        
+        
     }
    
     
@@ -52,14 +58,23 @@ class ChangeProfile: UIViewController, UIImagePickerControllerDelegate & UINavig
             imagePickerController.sourceType = .photoLibrary
             imagePickerController.allowsEditing = true
             self.present(imagePickerController, animated: true, completion: nil)
+            
+            
+            
         }
     }
 
     @IBAction func updateProfileBtn(_ sender: Any){
         NotificationCenter.default.post(name: Notification.Name("text"), object: (nameTextField.text! + " " + lastNameTextField.text!))
-
-//        NotificationCenter.default.post(name: Notification.Name("s"),object: chooseImg.image)
-
+        //NotificationCenter.default.post(name: Notification.Name("s"),object: changeProfileImage.image)
+        getProfileImageClosure?(changeProfileImage.image!)
+    }
+    
+    
+    
+    func changeProfileImage1() {
+        let image = changeProfileImage.image
+        profile?.profileImage.image = image
     }
         
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -73,5 +88,5 @@ class ChangeProfile: UIViewController, UIImagePickerControllerDelegate & UINavig
         picker.dismiss(animated: true, completion: nil)
     }
     
-}
+}//ChangeProfile class
 
